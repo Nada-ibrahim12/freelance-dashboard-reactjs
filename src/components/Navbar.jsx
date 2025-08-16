@@ -33,29 +33,18 @@ export class Navbar extends Component {
     this.setState((prev) => ({ dropdownOpen: !prev.dropdownOpen }));
   };
 
+   handleSearch = (query) => {
+    console.log("Searching for:", query);
+  };
+
   render() {
     const { dropdownOpen } = this.state;
 
     return (
       <div className="navbar flex justify-between items-center px-6 py-3 bg-white shadow-md sticky top-0 z-50">
-        <div className="flex items-center space-x-3">
-          <div className="logo-img w-12 h-12 flex items-center justify-center bg-blue-50 rounded-full">
-            <img
-              src="/freelance-work.png"
-              alt="logo"
-              className="w-8 h-8 object-contain"
-            />
-          </div>
-          <Link
-            to="/"
-            className="text-2xl font-extrabold text-gray-800 hover:text-gray-900 transition-colors"
-          >
-            FreeLance
-          </Link>
-        </div>
 
         <div className="flex-1 max-w-lg mx-6">
-          <Search />
+          <Search onSearch={this.handleSearch} />
         </div>
 
         <div className="nav-links">

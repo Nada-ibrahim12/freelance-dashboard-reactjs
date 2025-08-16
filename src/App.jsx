@@ -1,15 +1,12 @@
-import { useState } from "react";
-import "./App.css";
-import Navbar from "./components/Navbar.jsx";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import DashboardLayout from "./layouts/DashboardLayout";
 
-function App() {
-  const [count, setCount] = useState(0);
 
+export default function App() {
   return (
-    <>
-      <Navbar />
-    </>
+    <Router>
+      <DashboardLayout>
+      </DashboardLayout>
+    </Router>
   );
 }
-
-export default App;
