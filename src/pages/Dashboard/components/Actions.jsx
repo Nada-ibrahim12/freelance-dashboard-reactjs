@@ -18,7 +18,7 @@ export default class Actions extends Component {
     };
 
     return (
-      <div className="max-w-4xl mx-auto p-6 bg-gray-50 rounded-xl shadow-sm">
+      <div className="max-w-4xl mx-auto p-6 bg-gray-200 rounded-xl shadow-sm">
         <h2 className="text-xl font-semibold text-gray-700 mb-4">
           Quick Actions
         </h2>
@@ -29,7 +29,7 @@ export default class Actions extends Component {
             whileTap="tap"
             variants={buttonVariants}
             onClick={this.handleNewProject}
-            className="flex items-center justify-center gap-2 bg-gradient-to-r from-blue-700 to-blue-900 text-white p-4 rounded-lg transition-all duration-200 hover:shadow-md"
+            className="flex items-center gap-2 bg-gradient-to-r from-blue-700 to-blue-900 text-white p-4 rounded-lg transition-all duration-200 hover:shadow-md"
             aria-label="Create new project"
           >
             <div className="p-2 bg-blue-500 bg-opacity-20 rounded-full">

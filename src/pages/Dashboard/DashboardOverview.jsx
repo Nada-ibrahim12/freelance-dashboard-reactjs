@@ -3,6 +3,8 @@ import { FiHome } from "react-icons/fi";
 import { dummyData } from "../../utils/dummyData";
 import Cards from "./components/Cards";
 import Actions from "./components/Actions";
+import RecentActivities from "./components/RecentActivity";
+import PerformanceOverview from "./components/PerformanceOverview";
 
 export default class DashboardOverview extends Component {
   user = dummyData.user.name;
@@ -26,6 +28,18 @@ export default class DashboardOverview extends Component {
           </div>
           <div className="act">
             <Actions />
+          </div>
+          <div className="flex flex-col lg:flex-row gap-6 mt-10 p-4 w-full">
+            <div className="w-full lg:w-2/3 bg-gray-200 rounded-xl shadow-md p-4">
+              <RecentActivities />
+            </div>
+
+            <div className="w-full lg:w-1/3 bg-gray-200 rounded-xl shadow-md p-4">
+              <h2 className="text-xl font-semibold text-gray-800 m-4">
+                Performance Overview
+              </h2>
+              <PerformanceOverview />
+            </div>
           </div>
         </div>
       </div>
