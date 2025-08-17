@@ -1,7 +1,8 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import DashboardLayout from "./layouts/DashboardLayout";
 import Profile from "./pages/Profile";
-
+import Projects from "./pages/Projects";
+import DashboardOverview from "./pages/Dashboard/DashboardOverview";
 
 
 export default function App() {
@@ -9,8 +10,8 @@ export default function App() {
     <Router>
       <DashboardLayout>
         <Routes>
-          {/* <Route path="/" element={<Overview />} />
-          <Route path="/projects" element={<Projects />} /> */}
+          <Route path="/" element={<DashboardOverview />} />
+          <Route path="/projects" element={<Projects />} />
           <Route path="/profile" element={<Profile />} />
         </Routes>
       </DashboardLayout>
