@@ -25,7 +25,6 @@ class SidebarContent extends Component {
     { path: "/", name: "Overview", icon: "🏠" },
     { path: "/projects", name: "Projects", icon: "📂" },
     { path: "/profile", name: "Profile", icon: "👤" },
-    { path: "/messages", name: "Messages", icon: "💬" },
     { path: "/settings", name: "Settings", icon: "⚙️" },
   ];
 
@@ -51,7 +50,7 @@ class SidebarContent extends Component {
 
         <button
           onClick={this.toggleCollapse}
-          className={`hidden sm:flex items-center justify-center fixed top-4 z-50 bg-gray-800 text-white p-2 rounded-lg shadow-md hover:bg-gray-700 transition-colors`}
+          className={`hidden sm:flex items-center justify-center fixed top-4 z-50 font-extrabold text-dark text-2xl p-2 rounded-lg shadow-lg hover:text-3xl transition`}
           style={{
             transition: "left 0.3s ease",
             left: collapsed ? "4.5rem" : "16rem",
