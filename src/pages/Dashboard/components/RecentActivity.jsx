@@ -7,10 +7,8 @@ import {
   FiPauseCircle,
 } from "react-icons/fi";
 import { motion } from "framer-motion";
-import { dummyActivities } from "../../../utils/dummyData"; // Assuming dummyActivities is defined in dummyData
 
-export default class RecentActivity extends Component {
-  // Status configuration
+export default class RecentActivities extends Component {
   statusConfig = {
     new: {
       color: "bg-blue-100 text-blue-800",
@@ -35,8 +33,15 @@ export default class RecentActivity extends Component {
   };
 
   renderActivityItem = (activity) => {
-    const statusConfig =
-      this.statusConfig[activity.status] || this.statusConfig.new;
+    // Determine status based on message keywords
+    let status = "new";
+    if (activity.message.toLowerCase().includes("completed"))
+      status = "completed";
+    else if (activity.message.toLowerCase().includes("pending"))
+      status = "pending";
+    else if (activity.message.toLowerCase().includes("error")) status = "error";
+
+    const statusCfg = this.statusConfig[status];
 
     return (
       <motion.div
@@ -44,31 +49,15 @@ export default class RecentActivity extends Component {
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.3 }}
-        className={`activity flex items-start gap-4 bg-white rounded-lg shadow-sm p-4 mb-3 border-l-4 ${statusConfig.border} hover:shadow-md transition-all`}
+        className={`activity flex items-start gap-4 bg-white rounded-lg shadow-sm p-4 mb-3 border-l-4 ${statusCfg.border} hover:shadow-md transition-all`}
       >
-        <div className={`icon p-3 rounded-lg ${statusConfig.color}`}>
-          {statusConfig.icon}
+        <div className={`icon p-3 rounded-lg ${statusCfg.color}`}>
+          {statusCfg.icon}
         </div>
-
         <div className="info flex-1">
-          <h3 className="title font-semibold text-gray-800">
-            {activity.title}
-          </h3>
-          <p className="desc text-gray-600 text-sm mt-1">
-            {activity.description}
-          </p>
-
-          <div className="stat flex items-center justify-between mt-3">
-            <div className="flex items-center text-gray-500 text-xs">
-              <FiClock className="mr-1" />
-              <span>{activity.time}</span>
-            </div>
-
-            <span
-              className={`text-xs font-medium px-2 py-1 rounded-full ${statusConfig.color}`}
-            >
-              {activity.status}
-            </span>
+          <p className="text-gray-800">{activity.message}</p>
+          <div className="flex items-center text-gray-500 text-xs mt-2">
+            <FiClock className="mr-1" /> {activity.date}
           </div>
         </div>
       </motion.div>
@@ -76,12 +65,13 @@ export default class RecentActivity extends Component {
   };
 
   render() {
+    const { activities } = this.props;
     return (
-      <div className="recent-activities">
+      <div>
         <h2 className="text-xl font-semibold text-gray-800 mb-4">
           Recent Activities
         </h2>
-        {dummyActivities.map(this.renderActivityItem)}
+        {activities.map(this.renderActivityItem)}
       </div>
     );
   }

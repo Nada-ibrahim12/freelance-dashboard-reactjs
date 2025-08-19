@@ -11,12 +11,12 @@ import {
   FiTwitter,
 } from "react-icons/fi";
 import { FaUserCircle } from "react-icons/fa";
-import { dummyData } from "../utils/dummyData";
+import { user } from "../utils/dummyData";
 
 export class Profile extends Component {
   state = {
     isEditing: false,
-    formData: { ...dummyData.user },
+    formData: { ...user },
     activeTab: "personal",
   };
 
