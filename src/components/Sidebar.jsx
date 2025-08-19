@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 import { Link, useLocation } from "react-router-dom";
+import { Tooltip } from "react-tooltip";
 
 class SidebarContent extends Component {
   state = {
     open: false,
-    collapsed: false, // New state for collapsed mode
+    collapsed: false,
   };
 
   toggleSidebar = () => {
@@ -36,13 +37,10 @@ class SidebarContent extends Component {
       <>
         <button
           onClick={this.toggleSidebar}
-          className={`sm:hidden fixed top-4 left-1 z-50 bg-gray-800 text-white px-4 py-2 rounded-lg shadow-md hover:bg-gray-700 transition-colors ${
+          className={`sm:hidden fixed top-4 left-1 z-50 bg-indigo-600 text-white px-4 py-2 rounded-lg shadow-md hover:bg-indigo-700 transition-colors ${
             open ? "left-64" : "left-4"
           }`}
-          style={{
-            transition: "left 0.3s ease",
-            zIndex: 1000,
-          }}
+          style={{ transition: "left 0.3s ease", zIndex: 1000 }}
           aria-label="Toggle menu"
         >
           {open ? "✕" : "☰"}
@@ -50,10 +48,10 @@ class SidebarContent extends Component {
 
         <button
           onClick={this.toggleCollapse}
-          className={`hidden sm:flex items-center justify-center fixed top-4 z-50 font-extrabold text-dark text-2xl p-2 rounded-lg shadow-lg hover:text-3xl transition`}
+          className={`hidden sm:flex items-center justify-center fixed top-4 z-50 font-extrabold text-dark text-xl p-2 rounded-lg shadow-md bg-white border hover:bg-gray-100 transition`}
           style={{
+            left: collapsed ? "5.5rem" : "16.5rem",
             transition: "left 0.3s ease",
-            left: collapsed ? "4.5rem" : "16rem",
             zIndex: 1000,
           }}
           aria-label="Collapse sidebar"
@@ -62,21 +60,21 @@ class SidebarContent extends Component {
         </button>
 
         <aside
-          className={`fixed sm:static top-0 left-0 h-full bg-white shadow-xl p-6 transform transition-all duration-300 z-40 ${
+          className={`fixed sm:static top-0 left-0 h-full bg-white/90 backdrop-blur-lg shadow-2xl border-r border-gray-200 transform transition-all duration-300 z-40 ${
             open ? "translate-x-0" : "-translate-x-full"
           } sm:translate-x-0 ${collapsed ? "sm:w-20" : "sm:w-64"}`}
         >
           <div
-            className={`flex justify-between items-center pb-4 mb-6 border-b border-gray-200 ${
+            className={`flex items-center justify-between p-3 mb-6 border-b border-gray-200 ${
               collapsed ? "flex-col" : ""
             }`}
           >
             <div
-              className={`flex items-center space-x-3 ${
-                collapsed ? "flex-col space-x-0" : ""
+              className={`flex items-center gap-3 ${
+                collapsed ? "flex-col gap-0" : ""
               }`}
             >
-              <div className="logo-img w-12 h-12 flex items-center justify-center bg-indigo-100 rounded-full">
+              <div className="logo-img w-12 h-12 flex items-center justify-center bg-sky-100 rounded-2xl shadow">
                 <img
                   src="/freelance-work.png"
                   alt="logo"
@@ -87,7 +85,7 @@ class SidebarContent extends Component {
                 <Link
                   to="/"
                   onClick={this.closeSidebar}
-                  className="text-2xl font-bold text-gray-800 hover:text-gray-900 transition-colors"
+                  className="text-2xl font-bold text-gray-900 hover:text-sky-900 transition-colors"
                 >
                   FreeLance
                 </Link>
@@ -96,49 +94,44 @@ class SidebarContent extends Component {
           </div>
 
           <nav className="flex flex-col gap-2">
-            {this.navItems.map((item) => (
-              <Link
-                key={item.path}
-                to={item.path}
-                onClick={this.closeSidebar}
-                className={`flex items-center p-3 rounded-md font-medium transition-all ${
-                  location.pathname === item.path
-                    ? "bg-indigo-50 text-indigo-600"
-                    : "text-gray-600 hover:bg-gray-100"
-                } ${collapsed ? "justify-center" : ""}`}
-                title={collapsed ? item.name : ""} 
-              >
-                <span className={`text-lg ${collapsed ? "mr-0" : "mr-3"}`}>
-                  {item.icon}
-                </span>
-                {!collapsed && (
-                  <>
-                    {item.name}
-                    {location.pathname === item.path && (
-                      <span className="ml-auto w-2 h-2 bg-indigo-600 rounded-full"></span>
-                    )}
-                  </>
-                )}
-              </Link>
-            ))}
+            {this.navItems.map((item) => {
+              const isActive = location.pathname === item.path;
+              return (
+                <Link
+                  key={item.path}
+                  to={item.path}
+                  onClick={this.closeSidebar}
+                  className={`relative flex items-center p-3 rounded-xl font-medium transition-all group ${
+                    isActive
+                      ? "bg-sky-50 text-sky-800 shadow-sm"
+                      : "text-gray-600 hover:bg-gray-50"
+                  } ${collapsed ? "justify-center" : ""}`}
+                  title={collapsed ? item.name : ""}
+                >
+                  {/* Active Indicator */}
+                  {isActive && (
+                    <span className="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-6 bg-sky-800 rounded-r-full"></span>
+                  )}
+
+                  <span className={`text-lg ${collapsed ? "" : "mr-3"}`}>
+                    {item.icon}
+                  </span>
+
+                  {!collapsed && <span>{item.name}</span>}
+                </Link>
+              );
+            })}
           </nav>
 
-          {/* Footer section */}
-          <div
-            className={`absolute bottom-6 ${
-              collapsed ? "left-6 right-6" : "left-6 right-6"
-            }`}
-          >
-            <div className="pt-4 border-t border-gray-200">
-              <button
-                className={`w-full py-2 px-4 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-md transition-colors ${
-                  collapsed ? "p-2" : ""
-                }`}
-                title={collapsed ? "Logout" : ""}
-              >
-                {collapsed ? "⎋" : "Logout"}
-              </button>
-            </div>
+          <div className="absolute bottom-6 w-full px-4">
+            <button
+              className={`w-full flex items-center justify-center py-2 px-4 rounded-xl font-medium bg-gray-50 text-gray-700 hover:bg-red-50 hover:text-red-600 transition ${
+                collapsed ? "p-3" : ""
+              }`}
+              title={collapsed ? "Logout" : ""}
+            >
+              {collapsed ? "⎋" : "⎋ Logout"}
+            </button>
           </div>
         </aside>
       </>

@@ -29,7 +29,7 @@ export default class Actions extends Component {
             whileTap="tap"
             variants={buttonVariants}
             onClick={this.handleNewProject}
-            className="flex items-center gap-2 bg-gradient-to-r from-blue-700 to-blue-900 text-white p-4 rounded-lg transition-all duration-200 hover:shadow-md"
+            className="flex items-center gap-2 bg-gradient-to-r from-sky-700 to-sky-900 text-white p-4 rounded-lg transition-all duration-200 hover:shadow-md"
             aria-label="Create new project"
           >
             <div className="p-2 bg-blue-500 bg-opacity-20 rounded-full">

@@ -94,7 +94,7 @@ export class Navbar extends Component {
                 aria-expanded={dropdownOpen}
                 aria-haspopup="true"
               >
-                <div className="w-9 h-9 rounded-full bg-blue-50 flex items-center justify-center text-blue-600">
+                <div className="w-9 h-9 rounded-full bg-blue-50 flex items-center justify-center text-gray-800">
                   <FaUserCircle className="w-6 h-6" />
                 </div>
                 <FiChevronDown
