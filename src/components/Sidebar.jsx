@@ -37,7 +37,7 @@ class SidebarContent extends Component {
       <>
         <button
           onClick={this.toggleSidebar}
-          className={`sm:hidden fixed top-4 left-1 z-50 bg-indigo-600 text-white px-4 py-2 rounded-lg shadow-md hover:bg-indigo-700 transition-colors ${
+          className={`sm:hidden fixed top-4 left-1 z-50 bg-sky-900 text-white px-4 py-2 rounded-lg shadow-md hover:bg-sky-800 transition-colors ${
             open ? "left-64" : "left-4"
           }`}
           style={{ transition: "left 0.3s ease", zIndex: 1000 }}
