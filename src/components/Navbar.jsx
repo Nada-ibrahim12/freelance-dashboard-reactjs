@@ -9,6 +9,7 @@ import {
   FiLogOut,
 } from "react-icons/fi";
 import { FaUserCircle } from "react-icons/fa";
+import NotificationDropdown from "./components/NotificationDropdown";
 
 export class Navbar extends Component {
   constructor(props) {
@@ -76,14 +77,7 @@ export class Navbar extends Component {
         <div className="nav-links">
           <ul className="flex items-center space-x-5">
             <li className="relative">
-              <button className="p-2 rounded-full hover:bg-gray-100 transition-colors relative">
-                <FiBell className="w-5 h-5 text-gray-600" />
-                {notificationCount > 0 && (
-                  <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs font-semibold rounded-full h-5 w-5 flex items-center justify-center shadow-sm">
-                    {notificationCount}
-                  </span>
-                )}
-              </button>
+              <NotificationDropdown />
             </li>
 
             <li className="relative" ref={this.dropdownRef}>

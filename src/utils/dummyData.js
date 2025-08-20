@@ -116,8 +116,35 @@ export const monthlyEarnings = [
   { month: "Dec", earnings: 4200 },
 ];
 
-// Task stats (for pie chart)
-export const taskStats = [
-  { name: "Completed", value: tasks.filter(t => t.completed).length },
-  { name: "Pending", value: tasks.filter(t => !t.completed).length },
+
+
+export const notifications = [
+  {
+    id: 1,
+    type: 'project',
+    message: 'New project "Website Redesign" assigned',
+    time: '10 minutes ago',
+    read: false
+  },
+  {
+    id: 2,
+    type: 'payment',
+    message: 'Payment of $1,200 received',
+    time: '2 hours ago',
+    read: false
+  },
+  {
+    id: 3,
+    type: 'message',
+    message: 'New message from Sarah Johnson',
+    time: '5 hours ago',
+    read: true
+  },
+  {
+    id: 4,
+    type: 'task',
+    message: 'Task "Update documentation" due tomorrow',
+    time: '1 day ago',
+    read: true
+  }
 ];
