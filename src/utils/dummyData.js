@@ -92,12 +92,34 @@ export const tasks = [
 
 // Activities
 export const activities = [
-  { id: 1, message: "Completed Portfolio Website for Sarah Johnson", date: "2025-08-10" },
-  { id: 2, message: "Started E-Commerce Website project for TechMart", date: "2025-08-15" },
-  { id: 3, message: "Submitted Mobile App wireframes to GreenBank", date: "2025-09-05" },
-  { id: 4, message: "Added new project Landing Page for StartupHub", date: "2025-09-12" },
-  { id: 5, message: "Started CRM System project for BizCorp", date: "2025-09-20" },
-  { id: 6, message: "Launched Blog Platform for ContentKing", date: "2025-08-20" },
+  // Project completions
+  { id: 1, message: "Completed Portfolio Website for Sarah Johnson", date: "2025-08-10", type: "completed" },
+
+  // Project starts
+  { id: 3, message: "Started E-Commerce Website project for TechMart", date: "2025-08-15", type: "started" },
+
+  // Milestones/deliveries
+  { id: 5, message: "Submitted Mobile App wireframes to GreenBank", date: "2025-09-05", type: "delivery" },
+  { id: 6, message: "Added new project Landing Page for StartupHub", date: "2025-09-12", type: "new_project" },
+
+  // Client interactions
+  { id: 7, message: "Client meeting with TechMart to discuss requirements", date: "2025-08-14", type: "meeting" },
+  { id: 8, message: "Received feedback from Sarah Johnson on portfolio design", date: "2025-08-08", type: "feedback" },
+
+  // Payments
+  { id: 9, message: "Received payment of $1,200 for Portfolio Website", date: "2025-08-11", type: "payment" },
+  { id: 10, message: "Invoice sent to GreenBank for Mobile App UI", date: "2025-09-06", type: "invoice" },
+
+  // Task completions
+  { id: 11, message: "Completed task: Deploy website for Portfolio project", date: "2025-08-09", type: "task_completed" },
+
+  // System/account activities
+  { id: 13, message: "Updated profile information", date: "2025-09-01", type: "profile_update" },
+  { id: 14, message: "Changed account password", date: "2025-08-25", type: "security" },
+
+  // New features/updates
+  { id: 15, message: "Integrated new analytics dashboard", date: "2025-09-15", type: "update" },
+  { id: 16, message: "Added dark mode to application settings", date: "2025-09-08", type: "feature" }
 ];
 
 // Monthly earnings (for charts)
@@ -116,6 +138,11 @@ export const monthlyEarnings = [
   { month: "Dec", earnings: 4200 },
 ];
 
+// Task stats (for pie chart)
+export const taskStats = [
+  { name: "Completed", value: tasks.filter(t => t.completed).length },
+  { name: "Pending", value: tasks.filter(t => !t.completed).length },
+];
 
 
 export const notifications = [

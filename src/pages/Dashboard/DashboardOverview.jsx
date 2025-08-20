@@ -59,17 +59,18 @@ export default class DashboardOverview extends Component {
 
         {/* Activities & Performance */}
         <div className="flex flex-col lg:flex-row gap-6">
-          <div className="w-full lg:w-2/3 bg-white rounded-2xl shadow-md p-6">
+          <div className="w-full lg:w-1/2 bg-white rounded-2xl shadow-md p-6">
             <RecentActivities activities={activities} />
           </div>
 
-          <div className="w-full lg:w-1/3 bg-white rounded-2xl shadow-md p-6">
+          <div className="w-full lg:w-1/2 bg-white rounded-2xl shadow-md p-6">
             <h2 className="text-lg font-semibold text-gray-800 mb-4">
               Performance Overview
             </h2>
             <PerformanceOverview
               monthlyEarnings={monthlyEarnings}
               taskStats={taskStats}
+              projects={projects}
             />
           </div>
         </div>
