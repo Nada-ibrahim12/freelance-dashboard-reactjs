@@ -113,9 +113,7 @@ class SidebarContent extends Component {
                     <span className="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-6 bg-sky-800 rounded-r-full"></span>
                   )}
 
-                  <span className={`text-lg ${collapsed ? "" : "mr-3"}`}>
-                    {item.icon}
-                  </span>
+                 {collapsed && <span className="text-lg">{item.icon}</span>}
 
                   {!collapsed && <span>{item.name}</span>}
                 </Link>
